@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Display from "./Display.js";
 import keys from "./keys.js";
 import "./App.css";
@@ -11,15 +11,15 @@ const api = {
 const App = () => {
   const [zipcode, setZipcode] = useState("");
   const [weather, setWeather] = useState({});
+  const [hourlyForecast, setHourlyForecast] = useState({});
 
-  const search = async (event) => {
+  const searchZip = async (event) => {
     if (event.key === "Enter") {
       await fetch(
         `${api.base}weather?zip=${zipcode}&units=imperial&appid=${api.key}`
       )
         .then((res) => res.json())
         .then((result) => {
-          setZipcode("");
           console.log(result);
 
           setWeather(result);
@@ -27,7 +27,21 @@ const App = () => {
     }
   };
 
-  let light = new Date().toLocaleTimeString < 13 ? "" : " night";
+  const fetchHourly = async () => {
+    await fetch(
+      `${api.base}forecast?zip=${zipcode}&units=imperial&appid=${api.key}`
+    )
+      .then((res) => res.json())
+      .then((result) => {
+        setHourlyForecast(result);
+      });
+  };
+
+  let light = new Date().toLocaleTimeString().slice(0, 1) < 15 ? "" : " night";
+
+  useEffect(() => {
+    fetchHourly();
+  }, [weather]);
 
   return (
     <div className={`App` + light}>
@@ -39,12 +53,16 @@ const App = () => {
             className="search-bar"
             onChange={(e) => setZipcode(e.target.value)}
             value={zipcode}
-            onKeyPress={search}
+            onKeyPress={searchZip}
           />
         </div>
         {/* INPUT FIELD FOR OUR ZIP CODE*/}
 
-        <Display weather={weather} />
+        <Display
+          weather={weather}
+          hourlyForecast={hourlyForecast}
+          light={light}
+        />
       </main>
     </div>
   );

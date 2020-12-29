@@ -1,6 +1,7 @@
 import React from "react";
 
-const Display = ({ weather }) => {
+const Display = ({ weather, hourlyForecast, light }) => {
+  console.log(hourlyForecast);
   let clearness;
 
   if (weather.weather && weather.weather[0].main === "Thunderstorm") {
@@ -11,30 +12,58 @@ const Display = ({ weather }) => {
 
   let icon;
 
-  switch (weather.weather && weather.weather[0].main) {
-    case "Thunderstorm":
-      icon = "rain-cloud-white.svg";
-      break;
-    case "Drizzle":
-      icon = "rain-cloud-white.svg";
-      break;
-    case "Rain":
-      icon = "rain-cloud-white.svg";
-      break;
-    case "Snow":
-      icon = "snowflake-complex-white.svg";
-      break;
-    case "Atmosphere":
-      icon = "single-cloud-white.svg";
-      break;
-    case "Clear":
-      icon = "hot-sun-white.svg";
-      break;
-    case "Clouds":
-      icon = "sun-behind-cloud-white.svg";
-      break;
-    default:
-      icon = "shiny-sun-white.svg";
+  if (light !== " night") {
+    switch (weather.weather && weather.weather[0].main) {
+      case "Thunderstorm":
+        icon = "rain-cloud-white.svg";
+        break;
+      case "Drizzle":
+        icon = "rain-cloud-white.svg";
+        break;
+      case "Rain":
+        icon = "rain-cloud-white.svg";
+        break;
+      case "Snow":
+        icon = "snowflake-complex-white.svg";
+        break;
+      case "Atmosphere":
+        icon = "single-cloud-white.svg";
+        break;
+      case "Clear":
+        icon = "hot-sun-white.svg";
+        break;
+      case "Clouds":
+        icon = "sun-behind-cloud-white.svg";
+        break;
+      default:
+        icon = "shiny-sun-white";
+    }
+  } else if (light === " night") {
+    switch (weather.weather && weather.weather[0].main) {
+      case "Thunderstorm":
+        icon = "rain-cloud-white.svg";
+        break;
+      case "Drizzle":
+        icon = "rain-cloud-white.svg";
+        break;
+      case "Rain":
+        icon = "rain-cloud-white.svg";
+        break;
+      case "Snow":
+        icon = "snowflake-complex-white.svg";
+        break;
+      case "Atmosphere":
+        icon = "single-cloud-white.svg";
+        break;
+      case "Clear":
+        icon = "crescent-moon-white.svg";
+        break;
+      case "Clouds":
+        icon = "single-cloud-white.svg";
+        break;
+      default:
+        icon = "crescent-moon-white.svg";
+    }
   }
 
   return (
@@ -64,6 +93,13 @@ const Display = ({ weather }) => {
                 High: {Math.round(weather.main.temp_max)}°F
               </div>
             </div>
+
+            {/* <div>
+              <div>{hourlyForecast && hourlyForecast.list[3].main.temp}</div>
+              <div>{hourlyForecast && hourlyForecast.list[6].main.temp}</div>
+              <div>{hourlyForecast && hourlyForecast.list[9].main.temp}</div>
+              <div>{hourlyForecast && hourlyForecast.list[12 ].main.temp}</div>
+            </div> */}
           </div>
         </div>
       ) : (
