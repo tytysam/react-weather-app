@@ -46,6 +46,8 @@ const App = () => {
   return (
     <div className={`App` + light}>
       <main>
+        {/* INPUT FIELD FOR OUR ZIP CODE*/}
+
         <div className="search-container">
           <input
             type="text"
@@ -56,7 +58,6 @@ const App = () => {
             onKeyPress={searchZip}
           />
         </div>
-        {/* INPUT FIELD FOR OUR ZIP CODE*/}
 
         <Display
           weather={weather}
