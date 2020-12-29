@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Display from "./Display.js";
-import keys from "./keys.js";
+import keys from "../keys.js";
 import "./App.css";
 
 const api = {
