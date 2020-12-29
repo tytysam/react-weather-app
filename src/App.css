@@ -1,38 +1,166 @@
+/* ============================================================================================= */
+/* ============================================================================================= */
+/* ============================================================================================= */
+/* ============================================================================================= */
+/* ============================================================================================= */
+/* ============================================================================================= */
+
+:root {
+  --primaryColorLight: #fdfbf5;
+  --primaryColorDark: #4e4e4e;
+
+  --accentColorYellow: #f6a800;
+
+  --shadowDark: 3px 3px rgba(58, 53, 53, 0.25);
+
+  --onHoverHighlightLight: rgba(246, 168, 0, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-family: "Ubuntu", sans-serif;
+}
+
+body {
+}
+
 .App {
+  min-width: 350px;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(77, 177, 208, 0.85),
+    rgba(77, 177, 208, 0.35)
+  );
+  transition: 0.2s ease;
+}
+
+.App.sunny {
+  background-image: linear-gradient(
+    to bottom,
+    rgba(248, 213, 118, 0.85),
+    rgba(250, 113, 64, 0.35)
+  );
+  transition: 0.2s ease;
+}
+
+.App.stormy {
+  background-image: linear-gradient(
+    to bottom,
+    rgba(43, 82, 111, 0.85),
+    rgba(70, 67, 118, 0.35)
+  );
+  transition: 0.2s ease;
+}
+
+.App.night {
+  background-color: rgba(0, 0, 0, 0.95);
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: 0.2s ease;
+}
+
+main {
+  min-height: 100vh;
+  padding: 25px;
+}
+
+.search-container {
+  width: 100%;
+  text-align: center;
+  margin: 30px 0 25px 0;
+}
+
+.search-bar {
+  color: var(--primaryColorDark);
+  font-size: 25px;
+  display: inline-block;
+
+  width: 80%;
+  padding: 15px;
+  border: none;
+  outline: none;
+  appearance: none;
+
+  border-radius: 15px 15px 15px 15px;
+  box-shadow: var(--shadowDark);
+  background: transparent;
+  transition: 0.4s ease;
+}
+
+.search-container .search-bar:focus {
+  background-color: var(--primaryColorLight);
+  border: none;
+}
+
+::placeholder {
+  color: var(--primaryColorLight);
+}
+
+.search-bar input {
+  font-size: 20px;
+}
+
+.location-container {
+  color: var(--primaryColorLight);
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.location-container .location {
+  font-size: 35px;
+
+  margin-top: 15px;
+  margin-bottom: 15px;
+  text-shadow: 2.5px 2.5px rgba(58, 53, 53, 0.25);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.location-container .date {
+  color: var(--primaryColorLight);
+  font-size: 22px;
+  font-weight: 200;
+  text-align: center;
+  text-shadow: 1.5px 1.5px rgba(58, 53, 53, 0.25);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.weather-container {
+  text-align: center;
+}
+
+.weather-icon {
+  max-width: 200px;
+  height: auto;
+
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.temperature {
+  color: var(--primaryColorLight);
+  text-shadow: var(--shadowDark);
+
+  font-size: 45px;
+  font-weight: 700;
+}
+
+.weather {
+  color: var(--primaryColorLight);
+  font-size: 30px;
+  font-weight: 700;
+  text-shadow: var(--shadowDark);
+}
+
+.high-low {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+  justify-content: space-between;
 
-.App-link {
-  color: #61dafb;
-}
+  margin: 10px auto;
+  width: 55vw;
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  color: var(--primaryColorLight);
+  font-size: 25px;
+  font-weight: 400;
+  text-shadow: var(--shadowDark);
+  text-shadow: 2px 2px rgba(58, 53, 53, 0.25);
 }
