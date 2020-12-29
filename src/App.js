@@ -11,7 +11,7 @@ const api = {
 const App = () => {
   const [zipcode, setZipcode] = useState("");
   const [weather, setWeather] = useState({});
-  const [hourlyForecast, setHourlyForecast] = useState({});
+  // const [hourlyForecast, setHourlyForecast] = useState({});
 
   const searchZip = async (event) => {
     if (event.key === "Enter") {
@@ -27,21 +27,21 @@ const App = () => {
     }
   };
 
-  const fetchHourly = async () => {
-    await fetch(
-      `${api.base}forecast?zip=${zipcode}&units=imperial&appid=${api.key}`
-    )
-      .then((res) => res.json())
-      .then((result) => {
-        setHourlyForecast(result);
-      });
-  };
+  // const fetchHourly = async () => {
+  //   await fetch(
+  //     `${api.base}forecast?zip=${zipcode}&units=imperial&appid=${api.key}`
+  //   )
+  //     .then((res) => res.json())
+  //     .then((result) => {
+  //       setHourlyForecast(result);
+  //     });
+  // };
 
   let light = new Date().toLocaleTimeString().slice(0, 1) < 15 ? "" : " night";
 
-  useEffect(() => {
-    fetchHourly();
-  }, [weather]);
+  // useEffect(() => {
+  //   fetchHourly();
+  // }, [weather]);
 
   return (
     <div className={`App` + light}>
@@ -61,7 +61,7 @@ const App = () => {
 
         <Display
           weather={weather}
-          hourlyForecast={hourlyForecast}
+          // hourlyForecast={hourlyForecast}
           light={light}
         />
       </main>
