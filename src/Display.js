@@ -1,7 +1,6 @@
 import React from "react";
 
 const Display = ({ weather, hourlyForecast, light }) => {
-  console.log(hourlyForecast);
   let clearness;
 
   if (weather.weather && weather.weather[0].main === "Thunderstorm") {
