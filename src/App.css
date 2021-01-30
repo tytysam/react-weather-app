@@ -74,7 +74,7 @@ main {
 }
 
 .search-bar {
-  color: var(--primaryColorDark);
+  color: var(--primaryColorLight);
   font-size: 25px;
   display: inline-block;
 
@@ -91,7 +91,7 @@ main {
 }
 
 .search-container .search-bar:focus {
-  background-color: var(--primaryColorLight);
+  /* background-color: var(--primaryColorLight); */
   border: none;
 }
 

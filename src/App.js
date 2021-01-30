@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Display from "./Display.js";
 import keys from "./keys.js";
 import "./App.css";
@@ -44,7 +44,7 @@ const App = () => {
   // }, [weather]);
 
   return (
-    <div className={`App` + light}>
+    <div className={`App ` + light}>
       <main>
         {/* INPUT FIELD FOR OUR ZIP CODE*/}
 
